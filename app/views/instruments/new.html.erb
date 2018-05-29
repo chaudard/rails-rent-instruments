@@ -1,2 +1,20 @@
-<h1>Instruments#new</h1>
-<p>Find me in app/views/instruments/new.html.erb</p>
+<div class="background-instrument" >
+  <div class="container text-center">
+    <h1>Add a new instrument</h1>
+    <div class="instrument-form">
+      <%= simple_form_for @instrument do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :category, collection: ['guitare', 'piano', 'saxophone', 'violon'] %>
+      <%= f.input :price %>
+      <%= f.input :address %>
+      <%= f.input :zipcode %>
+      <%= f.input :city %>
+      <%= f.input :country %>
+      <%= f.input :image %>
+      <%= f.input :image_cache, as: :hidden %>
+      <%= f.submit "add a instrument", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
