@@ -1,2 +1,50 @@
-<h1>Instruments#index</h1>
-<p>Find me in app/views/instruments/index.html.erb</p>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>@instruments</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="searcharea">
+      <input type="text" placeholder="Ville.."
+      <select name="category" id="search_category" class="select">
+        <option value="Guitare">Guitare</option>
+        <option value="Piano">Piano</option>
+        <option value="Saxophone">Saxophone</option>
+        <option value="Violon">Violon</option>
+      </select>
+      <button type="submit" class="lownav-btn">Search</button>
+    </div>
+
+    <div id="map" style="left:490px;width:400px;height:800px;"></div>
+      <script>
+      function myMap() {
+      var mapOptions = {
+        center: new google.maps.LatLng(51.5, -0.12),
+        zoom: 10,
+        mapTypeId: google.maps.MapTypeId.HYBRID
+      }
+      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+
+    <div class="container">
+      <div class="row">
+        <% @instruments.each do |instrument| %>
+        <div class="col-md-3">
+          <div class="card" style="background-image: url(<%= instrument.image %>);">
+            <h2><%= instrument.title %></h2>
+            <p><%= instrument.price %></p>
+            <p><%= @datas["instrument.id"][:average] %></p>
+            <p><%= @datas["instrument.id"][:count] %></p>
+            <p><%= instrument.city %></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </body>
+</html>
