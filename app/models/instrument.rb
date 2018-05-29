@@ -10,4 +10,5 @@ class Instrument < ApplicationRecord
   validates :zipcode, presence: true
   validates :city, presence: true
   validates :country, presence: true
+  mount_uploader :image, ImageUploader
 end
