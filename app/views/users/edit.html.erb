@@ -1,2 +1,14 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="background-user" >
+  <div class="container text-center">
+    <h1>Update my UserProfile</h1>
+    <div class="profile-form">
+      <%= simple_form_for @users do |f| %>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :avatar %>
+      <%= f.input :avatar_cache, as: :hidden %>
+      <%= f.submit "Edit Profile", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
