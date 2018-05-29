@@ -6,9 +6,19 @@ class InstrumentsController < ApplicationController
   end
 
   def new
+    @instrument = Instrument.new
+    authorize @instrument
   end
 
   def create
+    @instrument = Instrument.new(params_instrument)
+    @instrument.user = current_user
+    authorize @instrument
+    if @instrument.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def edit
