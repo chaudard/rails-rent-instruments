@@ -1,15 +1,3 @@
-<!-- <html>
-  <head>
-    <meta charset="utf-8">
-    <title>@instruments</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-  -->
-
-
     <div class="container">
       <div class="row" id="search">
         <form id="search-form" action="<%= instruments_path %>" method="GET">
@@ -30,18 +18,7 @@
         </form>
       </div>
     </div>
-<!--
-  <div class="searcharea">
-    <input type="text" placeholder="Ville.."
-    <select name="category" id="search_category" class="select">
-      <option value="Guitare">Guitare</option>
-      <option value="Piano">Piano</option>
-      <option value="Saxophone">Saxophone</option>
-      <option value="Violon">Violon</option>
-    </select>
-    <button type="submit" class="lownav-btn">Search</button>
-  </div>
- -->
+
 
   <div class="container">
     <div class="row">
@@ -60,19 +37,10 @@
     </div>
   </div>
 
-  <div id="map" style="left:490px;width:400px;height:800px;"></div>
-  <script>
-    function myMap() {
-      var mapOptions = {
-        center: new google.maps.LatLng(51.5, -0.12),
-        zoom: 10,
-        mapTypeId: google.maps.MapTypeId.HYBRID
-      }
-      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    }
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
-
-<!--   </body>
-</html>
--->
+    <div
+       id="map"
+       style="width: 100%;
+       left: 490px;
+       height: 600px;"
+       data-markers="<%= @markers.to_json %>"
+     ></div>
