@@ -19,9 +19,7 @@ class InstrumentsController < ApplicationController
   def show
     @instrument = Instrument.find(params[:id])
     @proprio = @instrument.user
-    if user_signed_in?
-      @booking = Booking.new
-    end
+    @booking = Booking.new
     authorize @instrument
   end
 

@@ -14,7 +14,7 @@
       </p>
     </div>
   </div>
-  <% if @booking != nil %>
+  <% if user_signed_in? %>
     <div id="reservation">
       <div>
         <p>Prix / jour : <%= @instrument.price %> EUR</p>
@@ -22,7 +22,7 @@
       </div>
 
         <div>
-          <%= simple_form_for @booking do |f| %>
+          <%= simple_form_for [@instrument, @booking] do |f| %>
             <%= f.input :start_date, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') }%>
             <%= f.input :end_date, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') } %>
             <%= f.submit "Book this instrument", class: "btn btn-primary" %>

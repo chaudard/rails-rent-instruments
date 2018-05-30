@@ -9,7 +9,11 @@ class BookingPolicy < ApplicationPolicy
     end
 
     def create?
-      new?
+      !user.nil?
+    end
+
+    def show?
+      true
     end
 
     def dashboard?
