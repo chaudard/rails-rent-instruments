@@ -1,5 +1,9 @@
 class InstrumentsController < ApplicationController
   def index
+    city = params["City"];
+    category = params["category"]
+    @instruments = policy_scope(Instrument).where(["city = ? and category = ?", city, category])
+    # authorize @instruments
   end
 
   def show
