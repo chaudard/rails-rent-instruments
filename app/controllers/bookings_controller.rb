@@ -8,10 +8,10 @@ class BookingsController < ApplicationController
   def dashboard
     # @bookings = policy_scope(Booking)
     # @instruments = policy_scope(Instrument)
-    # @bookings = Booking.where(user: current_user)
+    @bookings = Booking.where(user: current_user)
     @instruments = Instrument.where(user: current_user)
     authorize @instruments
-    # authorize @bookings
+    authorize @bookings
   end
 
   def show

@@ -1,9 +1,24 @@
 <h1>my dashboard</h1>
+<div>
 <h2>my instruments</h2>
 <ul>
   <% @instruments.each do |instrument| %>
   <li>
+    <%= cl_image_tag instrument.image, height: 150, width: 200, crop: :fill  %>
     <%= instrument.title %>
   </li>
   <% end %>
 </ul>
+</div>
+<div>
+<h2>my bookings</h2>
+<ul>
+  <% @bookings.each do |booking| %>
+  <li>
+    <%= cl_image_tag booking.instrument.image, height: 150, width: 200, crop: :fill  %>
+    <%= booking.instrument.title %><br>
+    from: <%= booking.start_date %> to <%= booking.end_date %>
+  </li>
+  <% end %>
+</ul>
+</div>
