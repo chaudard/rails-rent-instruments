@@ -25,6 +25,7 @@
       <% @instruments.each do |instrument| %>
       <div class="col-md-3">
         <div class="card" style="background-image: url(<%= cl_image_path instrument.image %>);">
+          <%= link_to "", instrument_path(instrument), class: "card-link" %>
         </div>
         <div>
           <h2><%= instrument.title %></h2>
