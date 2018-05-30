@@ -1,5 +1,15 @@
 class InstrumentsController < ApplicationController
   def index
+    @instruments = Instrument.where.not(latitude: nil, longitude: nil)
+
+      @markers = @instruments.map do |instrument|
+        {
+          lat: instrument.latitude,
+          lng: instrument.longitude#,
+          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        }
+      end
+    end
   end
 
   def show
