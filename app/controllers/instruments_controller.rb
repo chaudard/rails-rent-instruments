@@ -1,9 +1,17 @@
 class InstrumentsController < ApplicationController
   def index
-    city = params["City"];
-    category = params["category"]
-    @instruments = policy_scope(Instrument).where(["city = ? and category = ?", city, category])
-    # authorize @instruments
+   city = params["City"];
+   category = params["category"]
+   @instruments = policy_scope(Instrument).where(["city = ? and category = ?", city, category]).where.not(latitude: nil, longitude: nil)
+
+      @markers = @instruments.map do |instrument|
+        {
+          lat: instrument.latitude,
+          lng: instrument.longitude#,
+          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        }
+      end
+    end
   end
 
   def show
