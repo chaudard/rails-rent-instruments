@@ -1,0 +1,17 @@
+.container{
+
+}
+
+/* We just give you a Gmaps with random width/height */
+#validation {
+  /*width: 30%;*/
+  flex : 0 0 450px;
+  height: 50vh;
+  position: sticky !important; /* !important to override Gmaps inline CSS */
+  top: 0 !important;
+}
+
+.cards-container{
+  // flex: 1 1 auto;
+}
+
