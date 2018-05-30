@@ -1,6 +1,8 @@
 class InstrumentsController < ApplicationController
   def index
-    @instruments = Instrument.where.not(latitude: nil, longitude: nil)
+   city = params["City"];
+   category = params["category"]
+   @instruments = policy_scope(Instrument).where(["city = ? and category = ?", city, category]).where.not(latitude: nil, longitude: nil)
 
       @markers = @instruments.map do |instrument|
         {
@@ -13,6 +15,12 @@ class InstrumentsController < ApplicationController
   end
 
   def show
+    @instrument = Instrument.find(params[:id])
+    @proprio = @instrument.user
+    if user_signed_in?
+      @booking = Booking.new
+    end
+    authorize @instrument
   end
 
   def new

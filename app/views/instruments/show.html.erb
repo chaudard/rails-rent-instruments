@@ -1,2 +1,33 @@
-<h1>Instruments#show</h1>
-<p>Find me in app/views/instruments/show.html.erb</p>
+
+
+<div class="container">
+  <div class="info-container">
+    <div>
+      <%= cl_image_tag @instrument.image, height: 300, width: 700, crop: :scale %>
+    </div>
+    <div id="detail">
+      <h2><%= @instrument.title %></h2>
+
+      <p>Adresse : <%= @instrument.description %>
+        <%= @instrument.address %>
+        <%= @instrument.zipcode %> - <%= @instrument.city %>
+      </p>
+    </div>
+  </div>
+  <% if @booking != nil %>
+    <div id="reservation">
+      <div>
+        <p>Prix / jour : <%= @instrument.price %> EUR</p>
+        <p>Total</p>
+      </div>
+
+        <div>
+          <%= simple_form_for @booking do |f| %>
+            <%= f.input :start_date, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') }%>
+            <%= f.input :end_date, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') } %>
+            <%= f.submit "Book this instrument", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+</div>
