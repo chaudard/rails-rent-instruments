@@ -1,7 +1,7 @@
 class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(user: user)
     end
 
     def new?
@@ -10,6 +10,11 @@ class BookingPolicy < ApplicationPolicy
 
     def create?
       new?
+    end
+
+    def dashboard?
+      # new?
+      true
     end
 
   end

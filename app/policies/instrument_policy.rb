@@ -5,9 +5,10 @@ class InstrumentPolicy < ApplicationPolicy
      end
    end
 
-   # def index?
-   #  true
-   # end
+   def dashboard?
+    # record.user == user
+    true
+   end
 
    def new?
      true
