@@ -10,7 +10,7 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Dashboard", "", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Dashboard", "/", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
@@ -47,7 +47,7 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><a href="users/edit">Profile</a></li>
-        <li><a href="">Dashboard</a></li>
+        <li><a href="/">Dashboard</a></li>
         <li><a href="instruments/new">Add an Instrument</a></li>
         <li><a href="users/sign_out">Logout</a></li>
       </ul>
