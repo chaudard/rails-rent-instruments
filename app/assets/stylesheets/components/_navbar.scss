@@ -12,13 +12,13 @@
 
 /* Logo */
 .navbar-wagon-brand img {
-  height: 50px;
+  height: 70px;
 }
 
 /* User Avatar */
 .navbar-wagon .avatar {
-  height: 35px;
-  width: 35px;
+  height: 40px;
+  width: 45px;
   border-radius: 50%;
 }
 
@@ -37,19 +37,19 @@
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
+  color: black;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: grey;
   text-decoration: none;
 }
 
 /* Dropdown menu */
 .navbar-wagon-dropdown-menu {
   margin-top: 15px;
-  box-shadow: 1px 1px 4px #E6E6E6;
-  border-color: #E6E6E6;
+  box-shadow: 1px 1px 4px;
+  border-color: black;
 }
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
