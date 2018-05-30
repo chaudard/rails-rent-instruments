@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 .banner {
   color: white;
-  text-align: center;
+  text-align: right;
   height: 100vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
@@ -10,10 +10,10 @@
   justify-content: center;
 }
 .banner h1 {
-  font-size: 50px;
+  font-size: 60px;
   font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  padding: 60px;
 }
 .banner p {
   font-size: 25px;
