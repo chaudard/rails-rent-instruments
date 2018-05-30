@@ -12,6 +12,10 @@ class InstrumentsController < ApplicationController
     end
   end
 
+  def dashboard
+
+  end
+
   def show
     @instrument = Instrument.find(params[:id])
     @proprio = @instrument.user
@@ -31,7 +35,7 @@ class InstrumentsController < ApplicationController
     @instrument.user = current_user
     authorize @instrument
     if @instrument.save
-      redirect_to root_path
+      redirect_to bookings_path # go to dashboard
     else
       render :new
     end

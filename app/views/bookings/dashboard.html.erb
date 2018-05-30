@@ -1,0 +1,9 @@
+<h1>my dashboard</h1>
+<h2>my instruments</h2>
+<ul>
+  <% @instruments.each do |instrument| %>
+  <li>
+    <%= instrument.title %>
+  </li>
+  <% end %>
+</ul>
