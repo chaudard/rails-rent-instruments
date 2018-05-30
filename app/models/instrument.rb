@@ -11,6 +11,6 @@ class Instrument < ApplicationRecord
   validates :city, presence: true
   validates :country, presence: true
   mount_uploader :image, ImageUploader
-  geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
+  geocoded_by :city
+  after_validation :geocode, if: :will_save_change_to_city?
 end
