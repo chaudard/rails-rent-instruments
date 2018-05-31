@@ -10,7 +10,10 @@
       <p>
         Description : <%= @instrument.description %><br>
         Adresse : <%= @instrument.address %><br>
-        bookings : <%= @nb_bookings %>
+        bookings : <%= @nb_bookings %><br>
+        sum of ratings : <%= @sum_ratings %>
+        <% avg_rating = (@sum_ratings/@nb_bookings).floor %><br>
+        avg ratings : <%= avg_rating %>
       </p>
     </div>
   </div>

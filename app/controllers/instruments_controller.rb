@@ -25,6 +25,7 @@ class InstrumentsController < ApplicationController
     @booking = Booking.new
     # compute number of bookings
     @nb_bookings = Booking.where.not(user: current_user).count
+    @sum_ratings = Booking.where(instrument: @instrument).sum(:rating)
     authorize @instrument
   end
 
