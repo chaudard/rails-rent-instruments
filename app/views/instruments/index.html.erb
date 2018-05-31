@@ -13,25 +13,21 @@
             </select>
           </div>
           <div class="form-group col-sm-3 col-xs-6">
-            <button type="submit" class="btn btn-block btn-primary">Search</button>
+            <button type="submit" class="btn-search">Search</button>
           </div>
         </form>
       </div>
     </div>
 
 
+    <% @instruments.each do |instrument| %>
   <div class="container">
     <div class="row">
-      <% @instruments.each do |instrument| %>
-      <div class="col-md-3">
+      <div class="col-xs-12 col-sm-4">
         <div class="card" style="background-image: url(<%= cl_image_path instrument.image %>);">
           <%= link_to "", instrument_path(instrument), class: "card-link" %>
-        </div>
-        <div>
-          <h2><%= instrument.title %></h2>
-          <p><%= instrument.price %></p>
           <!-- ajouter ici les infos de rating moyen + nombre de bookings -->
-          <p><%= instrument.city %></p>
+          <p><em><%= instrument.city %></em></p>
         </div>
       </div>
       <% end %>
