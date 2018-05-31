@@ -1,25 +1,28 @@
-    <div class="container">
-      <div class="row" id="search">
-        <form id="search-form" action="<%= instruments_path %>" method="GET">
-          <div class="form-group col-sm-4 col-xs-6">
-            <input id="instrument_city" class="form-control" type="text" placeholder="Search by city" name="City" />
-          </div>
-          <div class="form-group col-sm-4 col-xs-6">
-            <select data-filter="make" class="filter-make filter form-control" name="category">
-              <option value="Guitare">Guitare</option>
-              <option value="Piano">Piano</option>
-              <option value="Saxophone">Saxophone</option>
-              <option value="Violon">Violon</option>
-            </select>
-          </div>
-          <div class="form-group col-sm-3 col-xs-6">
-            <button type="submit" class="btn btn-block btn-primary">Search</button>
-          </div>
-        </form>
+<div class="container">
+  <div class="row" id="search">
+    <form id="search-form" action="<%= instruments_path %>" method="GET">
+
+<!--
+      <div class="form-group col-sm-4 col-xs-6">
+        <input id="instrument_address" class="form-control" type="text" placeholder="Search by address" name="address" />
       </div>
+    -->
+    <div class="form-group col-sm-4 col-xs-6">
+      <select data-filter="make" class="filter-make filter form-control" name="category">
+        <option value="Guitare">Guitare</option>
+        <option value="Piano">Piano</option>
+        <option value="Saxophone">Saxophone</option>
+        <option value="Violon">Violon</option>
+      </select>
     </div>
+    <div class="form-group col-sm-3 col-xs-6">
+      <button type="submit" class="btn btn-block btn-primary">Search</button>
+    </div>
+    </form>
+  </div>
+</div>
 
-
+<div class="contener" style="display: flex;">
   <div class="container">
     <div class="row">
       <% @instruments.each do |instrument| %>
@@ -31,17 +34,18 @@
           <h2><%= instrument.title %></h2>
           <p><%= instrument.price %></p>
           <!-- ajouter ici les infos de rating moyen + nombre de bookings -->
-          <p><%= instrument.city %></p>
+          <p><%= instrument.address %></p>
         </div>
       </div>
       <% end %>
     </div>
   </div>
 
-    <div
-       id="map"
-       style="width: 100%;
-       left: 490px;
-       height: 600px;"
-       data-markers="<%= @markers.to_json %>"
-     ></div>
+  <div
+  id="map"
+  style="width: 100%;
+  height: 700px;
+  position: sticky !important;"
+  data-markers="<%= @markers.to_json %>"
+  ></div>
+</div>

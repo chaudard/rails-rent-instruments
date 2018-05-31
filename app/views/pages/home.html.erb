@@ -5,32 +5,28 @@
   <div class="banner-content">
     <h1>Rent instruments</h1>
 
-<!--     <%= form_tag("/search", method: "get") do %>
-      <%= label_tag(:city, "City:") %>
-      <%= text_field_tag(:city) %>
-      <%= label_tag(:category, "Category:") %>
-      <%= text_field_tag(:category) %>
-      <%= submit_tag("Search") %>
-    <% end %> -->
+
     <div class="container">
       <div class="row" id="search">
         <form id="search-form" action="<%= instruments_path %>" method="GET">
+<!--
           <div class="form-group col-sm-4 col-xs-6">
-            <input class="form-control" id="instrument_city" type="text" placeholder="Search by city" name="City" />
+            <input class="form-control" id="instrument_address" type="text" placeholder="Search by address" name="address" />
           </div>
-          <div class="form-group col-sm-4 col-xs-6">
-            <select data-filter="make" class="filter-make filter form-control" name="category">
-              <option value="Guitare">Guitare</option>
-              <option value="Piano">Piano</option>
-              <option value="Saxophone">Saxophone</option>
-              <option value="Violon">Violon</option>
-            </select>
-          </div>
-          <div class="form-group col-sm-3 col-xs-6">
-            <button type="submit" class="btn btn-block btn-primary">Search</button>
-          </div>
-        </form>
-      </div>
+        -->
+        <div class="form-group col-sm-4 col-xs-6">
+          <select data-filter="make" class="filter-make filter form-control" name="category">
+            <option value="Guitare">Guitare</option>
+            <option value="Piano">Piano</option>
+            <option value="Saxophone">Saxophone</option>
+            <option value="Violon">Violon</option>
+          </select>
+        </div>
+        <div class="form-group col-sm-3 col-xs-6">
+          <button type="submit" class="btn btn-block btn-primary">Search</button>
+        </div>
+      </form>
     </div>
   </div>
+</div>
 </div>

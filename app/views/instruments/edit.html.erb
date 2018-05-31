@@ -1,2 +1,17 @@
-<h1>Instruments#edit</h1>
-<p>Find me in app/views/instruments/edit.html.erb</p>
+<div class="background-instrument" >
+  <div class="container text-center">
+    <h1>Edit <%= @instrument.title %></h1>
+    <div class="instrument-form">
+      <%= simple_form_for @instrument do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :category, collection: ['Guitare', 'Piano', 'Saxophone', 'Violon'] %>
+      <%= f.input :price %>
+      <%= f.input :address %>
+      <%= f.input :image %>
+      <%= f.input :image_cache, as: :hidden %>
+      <%= f.submit "valid changements", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
