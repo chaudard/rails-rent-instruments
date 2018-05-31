@@ -1,21 +1,24 @@
-<h1>my dashboard</h1>
-<div>
-  <h2>my instruments</h2>
+<div class="container">
+  <h1>Dashboard</h1>
+  <h3>My Instruments</h3>
   <p>
-    <%= link_to "add", new_instrument_path , class: "btn btn-primary" %>
+    <%= link_to "Add an instrument", new_instrument_path , class: "btn-add" %>
   </p>
   <ul>
     <% @instruments.each do |instrument| %>
-    <li>
-      <%= cl_image_tag instrument.image, height: 150, width: 200, crop: :fill  %>
-      <%= instrument.title %>
-      <%= link_to "edit", edit_instrument_path(instrument) , class: "btn btn-primary" %>
-    </li>
-    <% end %>
-  </ul>
-</div>
-<div>
-  <h2>my bookings</h2>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: url(<%= cl_image_path instrument.image %>);">
+          <p><strong><%= instrument.title %></strong></p>
+          <!-- ajouter ici les infos de rating moyen + nombre de bookings -->
+        </div>
+        <%= link_to "edit", edit_instrument_path(instrument) , class: "btn-push" %>
+        <% end %>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <h2>My bookings</h2>
   <!-- les locations d instruments que j ai faites aupres d autres personnes -->
   <ul>
     <% @bookings.each do |booking| %>
@@ -25,11 +28,11 @@
       <%= cl_image_tag booking.instrument.user.avatar, id: "dashboard-avatar-user" %><br>
       from: <%= booking.start_date %> to: <%= booking.end_date %>
       <% if booking.validated.nil? %>
-       - pending
+       - <em>Pending..</em>
       <% elsif booking.validated %>
-       - validated
+       - <strong>Validated !</strong>
       <% else %>
-       - aborted
+       - <em><strong>Aborted =(</em></strong>
       <% end %>
     </li>
     <% end %>
@@ -47,12 +50,12 @@
       from: <%= booking.start_date %> to: <%= booking.end_date %>
       <% if booking.validated.nil? %>
        <br>
-       <%= link_to "validated", '#' , class: "btn btn-primary" %>
-       <%= link_to "aborted", '#' , class: "btn btn-primary" %>
+       <%= link_to "validated", '#' , class: "btn-push" %>
+       <%= link_to "aborted", '#' , class: "btn-push" %>
       <% elsif booking.validated %>
-       - validated
+       - <strong>Validated !</strong>
       <% else %>
-       - aborted
+       - <em><strong>Aborted =(</em></strong>
       <% end %>
     </li>
     <% end %>
