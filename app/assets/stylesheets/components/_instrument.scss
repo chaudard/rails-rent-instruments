@@ -1,5 +1,7 @@
 .container{
-
+   display: flex;
+   justify-content : space-around;
+  // align-items: center;
 }
 
 /* We just give you a Gmaps with random width/height */
@@ -15,3 +17,12 @@
   // flex: 1 1 auto;
 }
 
+.large-button{
+  padding: 20px 60px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.instrument-form{
+
+}
