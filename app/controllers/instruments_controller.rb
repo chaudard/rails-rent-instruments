@@ -23,6 +23,8 @@ class InstrumentsController < ApplicationController
   def show
     @proprio = @instrument.user
     @booking = Booking.new
+    # compute number of bookings
+    @nb_bookings = Booking.where.not(user: current_user).count
     authorize @instrument
   end
 
