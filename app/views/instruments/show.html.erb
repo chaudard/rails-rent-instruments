@@ -1,33 +1,40 @@
+<div class="container" style="color: white; background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= cl_image_path("qhn5agbtqkdz6hhaoulp.jpg") %>');">
 
-
-<div class="container">
   <div class="info-container">
     <div>
-      <%= cl_image_tag @instrument.image, height: 300, width: 700, crop: :scale %>
+      <%= cl_image_tag @instrument.image, height: 200, width: 300, crop: :fill %>
     </div>
     <div id="detail">
       <h2><%= @instrument.title %></h2>
 
-      <p>Adresse : <%= @instrument.description %>
-        <%= @instrument.address %>
-        <%= @instrument.zipcode %> - <%= @instrument.city %>
+      <p>
+        Description : <%= @instrument.description %><br>
+        Adresse : <%= @instrument.address %>
+<!--         <%= @instrument.address %>
+  <%= @instrument.zipcode %> - <%= @instrument.city %> -->
       </p>
     </div>
   </div>
-  <% if user_signed_in? %>
-    <div id="reservation">
-      <div>
-        <p>Prix / jour : <%= @instrument.price %> EUR</p>
-        <p>Total</p>
-      </div>
 
-        <div>
-          <%= simple_form_for [@instrument, @booking] do |f| %>
-            <%= f.input :start_date, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') }%>
-            <%= f.input :end_date, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') } %>
-            <%= f.submit "Book this instrument", class: "btn btn-primary" %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+  <% if user_signed_in? %>
+  <div id="reservation">
+    <div>
+      <p>Prix / jour : <%= @instrument.price %> EUR</p>
+      <p>Total</p>
+    </div>
+
+    <div>
+      <%= simple_form_for [@instrument, @booking] do |f| %>
+      <%= f.input :start_date, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') }%>
+      <%= f.input :end_date, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') } %>
+      <%= f.submit "Book this instrument", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <% else %>
+    <p>
+      You have to be connected to book an instrument
+    </p>
+  <% end %>
+
 </div>

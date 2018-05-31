@@ -7,10 +7,10 @@ class Instrument < ApplicationRecord
   validates :price, presence: true, numericality: true
   validates :image, presence: true
   validates :address, presence: true
-  validates :zipcode, presence: true
-  validates :city, presence: true
-  validates :country, presence: true
+  # validates :zipcode, presence: true
+  # validates :city, presence: true
+  # validates :country, presence: true
   mount_uploader :image, ImageUploader
-  geocoded_by :city
-  after_validation :geocode, if: :will_save_change_to_city?
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
