@@ -3,6 +3,24 @@
    justify-content : space-around;
   // align-items: center;
 }
+.instrument-form {
+  text-align: left;
+  color: white;
+  display: inline-flex;
+  font-style: italic;
+}
+.btn-secondpage {
+  background-color: #8D8F93;
+  padding: 2px 5px;
+  border-radius: 12px;
+  font-weight: bold;
+  opacity: 1;
+}
+.btn-secondpage:hover{
+  text-decoration: inherit;
+  color: lightgrey;
+}
+
 
 /* We just give you a Gmaps with random width/height */
 #validation {
