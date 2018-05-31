@@ -3,18 +3,23 @@
  -->
 <div class="background-instrument" style="color: white; background-color: #8D8F93;">
   <div class="container text-center">
-    <h1>Add a new instrument</h1>
-    <div class="instrument-form">
-      <%= simple_form_for @instrument do |f| %>
-      <%= f.input :title %>
-      <%= f.input :description %>
-      <%= f.input :category, collection: ['Guitare', 'Piano', 'Saxophone', 'Violon'] %>
-      <%= f.input :price %>
-      <%= f.input :address %>
-      <%= f.input :image %>
-      <%= f.input :image_cache, as: :hidden %>
-      <%= f.submit "add a instrument", class: "btn-secondpage" %>
-      <% end %>
+    <div class="row">
+      <h1>Add a new instrument</h1>
+      <div class="col-xs-12 instrument-form">
+        <%= simple_form_for @instrument do |f| %>
+          <%= f.input :title, :input_html => {:maxlength => 50} %>
+          <%= f.input :description %>
+          <%= f.input :category, collection: ['Guitare', 'Piano', 'Saxophone', 'Violon'] %>
+          <%= f.input :price %>
+          <%= f.input :address %>
+          <%= f.input :image %>
+          <%= f.input :image_cache, as: :hidden %>
+          <%= f.submit "add a instrument", class: "btn btn-success large-button" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+
+
+
