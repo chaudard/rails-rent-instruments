@@ -1,4 +1,7 @@
-<div class="background-instrument" >
+<!--
+<div class="background-instrument"  style="background-image: url('https://res.cloudinary.com/dwoel6eny/image/upload/v1527728794/qkzd59rfhujbnsoezpsy.jpg');">
+ -->
+<div class="background-instrument" style="color: white; background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= cl_image_path("qkzd59rfhujbnsoezpsy.jpg") %>');">
   <div class="container text-center">
     <h1>Add a new instrument</h1>
     <div class="instrument-form">
@@ -8,9 +11,6 @@
       <%= f.input :category, collection: ['Guitare', 'Piano', 'Saxophone', 'Violon'] %>
       <%= f.input :price %>
       <%= f.input :address %>
-      <%= f.input :zipcode %>
-      <%= f.input :city %>
-      <%= f.input :country %>
       <%= f.input :image %>
       <%= f.input :image_cache, as: :hidden %>
       <%= f.submit "add a instrument", class: "btn btn-primary" %>

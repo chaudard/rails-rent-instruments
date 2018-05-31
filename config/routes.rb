@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   resources :instruments do
     resources :bookings, only: [:create]
   end
-  resources :bookings, except: [:create]
+  resources :bookings, except: [:create] do
+    collection do
+      get 'dashboard', to: "bookings#dashboard"  # BookingsController#dashboard
+    end
+  end
 end
