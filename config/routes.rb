@@ -9,5 +9,8 @@ Rails.application.routes.draw do
     collection do
       get 'dashboard', to: "bookings#dashboard"  # BookingsController#dashboard
     end
+    member do
+      get 'changerating', to: "bookings#changerating"
+    end
   end
 end

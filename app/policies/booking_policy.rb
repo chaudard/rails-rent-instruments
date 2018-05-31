@@ -21,4 +21,7 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
+  def changerating?
+    true
+  end
 end

@@ -31,6 +31,19 @@
       <% else %>
        - aborted
       <% end %>
+
+      <!-- change rating of this booking -->
+
+      <div id="form-change-rarting">
+        <%= simple_form_for booking, url: changerating_booking_path(booking), method: :get do |f| %>
+          <%= f.input :rating, collection: ['0', '1', '2', '3', '4', '5'] %>
+          <%= f.submit "valid new rating", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+
+
+
     </li>
     <% end %>
   </ul>

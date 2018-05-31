@@ -16,6 +16,21 @@ class BookingsController < ApplicationController
     # authorize @foreign_bookings
   end
 
+  def changerating
+    booking = Booking.find(params[:id])
+    new_rating = params[:booking][:rating].to_i
+    booking.rating = new_rating
+    authorize booking
+
+    if booking.save
+      # redirect_to instrument_path(instrument), notice: 'Booking validated'
+      redirect_to dashboard_bookings_path, notice: 'Booking rating updated'
+    else
+
+    end
+
+  end
+
   def show
     authorize @booking
   end
