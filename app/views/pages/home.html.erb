@@ -1,12 +1,12 @@
 <div class="banner" style="background-image: url('http://res.cloudinary.com/dwoel6eny/image/upload/v1527692010/tqpipjjte44fhopyhvex.jpg');">
   <div class="container banner-content container-instrument">
     <div class="row">
-      <div class="form-group col-xs-12 center">
-        <h1>Rent instruments</h1>
+      <div class="form-group col-xs-10">
+        <em><h1>Rent instruments</h1></em>
       </div>
 
       <%= form_tag instruments_path, method: :get do %>
-        <div class="form-group col-sm-4 col-xs-4">
+        <div class="form-group col-sm-4 col-xs-1" style="background-color: white; width: 30%; height: 2.6rem;">
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
@@ -14,7 +14,7 @@
           %>
         </div>
 
-        <div class="form-group col-sm-4 col-xs-4">
+        <div class="form-group col-sm-3 col-xs-4">
           <select data-filter="make" class="filter-make filter form-control" name="category">
             <option value="guitare">guitare</option>
             <option value="piano">piano</option>
@@ -22,11 +22,11 @@
             <option value="violon">violon</option>
           </select>
         </div>
-        <div class="form-group col-sm-4 col-xs-4 center">
-          <%= submit_tag(value = "SUBMIT", class: "btn btn-success small-button") %>
+        <div class="form-group col-sm-20 col-xs-1 center">
+          <%= submit_tag(value = "SUBMIT", class: "btn waves-effect waves-light grey darken-1") %>
         </div>
       <% end %>
+      <strong><em>"La musique chasse la haine chez ceux qui sont sans amour. Elle donne la paix à ceux qui sont sans repos, elle console ceux qui pleurent.."</em></strong>
     </div>
   </div>
 </div>
-

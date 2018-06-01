@@ -20,8 +20,8 @@
     <%= f.input :avatar_cache, as: :hidden %>
 
     <div class="form-actions">
-      <%= f.button :submit, "Update", class:"btn btn-success small-button" %>
-      <%= link_to "Back", root_path ,class:"btn btn-success small-button" %>
+      <%= f.button :submit, "Update", class:"btn waves-effect waves-light teal accent-4" %>
+      <%= link_to "Back", root_path ,class:"btn waves-effect waves-light blue darken-3" %>
       <p>Unhappy? <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
     </div>
   <% end %>
