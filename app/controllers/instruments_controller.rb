@@ -1,12 +1,28 @@
 class InstrumentsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_instrument, only: [:show, :edit, :update, :destroy]
+  skip_after_action :verify_policy_scoped
 
   def index
     # address = params["address"];
-    category = params["category"]
+
+    @category = params[:search][:category] if params[:search]
+    @category = params[:category] if params[:category]
+
+    if params[:query].present?
+      @instruments = Instrument.search_by_title_and_description(params[:query])
+    else
+      @instruments = Instrument.all
+    end
+
+    # if params[:city].present?
+    #   @instruments = @instruments.where("city ILIKE ?", "%#{params[:city]}%")
+    # end
+
     # Topic.where("name like ?", "%#{@search}%")
-    # @instruments = policy_scope(Instrument).where(["address like ? and category = ?", address, category]).where.not(latitude: nil, longitude: nil)
-    @instruments = policy_scope(Instrument).where(["category = ?", category]).where.not(latitude: nil, longitude: nil)
+    if @category != nil
+      @instruments = @instruments.where(category: @category).where.not(latitude: nil, longitude: nil, image: nil)
+    end
     @markers = @instruments.map do |instrument|
       {
         lat: instrument.latitude,
@@ -14,6 +30,7 @@ class InstrumentsController < ApplicationController
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     end
+
   end
 
   def dashboard

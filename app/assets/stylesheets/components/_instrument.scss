@@ -1,7 +1,7 @@
-.container{
-   display: flex;
-   justify-content : space-around;
-  // align-items: center;
+
+.container-instrument{
+  display: flex;
+  justify-content : space-around;
 }
 
 /* We just give you a Gmaps with random width/height */
@@ -13,16 +13,41 @@
   top: 0 !important;
 }
 
-.cards-container{
-  flex: 1 1 auto;
-}
-
 .large-button{
   padding: 20px 60px;
   margin-top: 50px;
   margin-bottom: 50px;
+  font-weight: bold;
 }
 
-.instrument-form{
+.center{
+  text-align: center;
+}
 
+.main-container{
+    display: flex;
+    justify-content : space-around;
+}
+
+.cards-container{
+  flex: 1 1 auto;
+  border: 1px solid black;
+  padding-right: 10px;
+}
+
+#map {
+  flex : 0 0 450px;
+  height: 100vh;
+  position: sticky !important; /* !important to override Gmaps inline CSS */
+  top: 0 !important;
+}
+
+.max-width{
+  width: 100%;
+}
+
+.head-form{
+  margin-top: 20px;
+  display: flex;
+  justify-content : space-around;
 }

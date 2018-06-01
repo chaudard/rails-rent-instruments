@@ -1,34 +1,36 @@
 
 
 <div class="banner" style="background-image: url('http://res.cloudinary.com/dwoel6eny/image/upload/v1527692010/tqpipjjte44fhopyhvex.jpg');">
+  <div class="container banner-content container-instrument">
+    <div class="row">
+      <div class="form-group col-xs-12 center">
+        <h1>Rent instruments</h1>
+      </div>
 
-  <div class="banner-content">
-    <h1>Rent instruments</h1>
+      <%= form_tag instruments_path, method: :get do %>
+        <div class="form-group col-sm-4 col-xs-4">
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find an instrument"
+          %>
+        </div>
 
+        <div class="form-group col-sm-4 col-xs-4">
 
-    <div class="container">
-      <div class="row" id="search">
-        <form id="search-form" action="<%= instruments_path %>" method="GET">
-<!--
-          <div class="form-group col-sm-4 col-xs-6">
-            <input class="form-control" id="instrument_address" type="text" placeholder="Search by address" name="address" />
-          </div>
-
-        -->
-        <div class="form-group col-sm-4 col-xs-6">
           <select data-filter="make" class="filter-make filter form-control" name="category">
-            <option value="Guitare">Guitare</option>
-            <option value="Piano">Piano</option>
-            <option value="Saxophone">Saxophone</option>
-            <option value="Violon">Violon</option>
+            <option value="guitare">guitare</option>
+            <option value="piano">piano</option>
+            <option value="saxophone">saxophone</option>
+            <option value="violon">violon</option>
           </select>
-        </div>
-        <div class="form-group col-sm-3 col-xs-6">
-          <button type="submit" class="btn-search">Search</button>
-        </div>
-      </form>
 
+        </div>
+        <div class="form-group col-sm-4 col-xs-4 center">
+          <%= submit_tag(value = "SUBMIT", class: "btn btn-primary") %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
-</div>
+

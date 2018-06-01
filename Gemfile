@@ -38,3 +38,4 @@ gem "pundit"
 gem 'country_select'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 gem 'momentjs-rails', '>= 2.9.0'
+gem 'pg_search'
