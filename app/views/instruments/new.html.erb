@@ -2,7 +2,7 @@
 <!--
 <div class="background-instrument"  style="background-image: url('https://res.cloudinary.com/dwoel6eny/image/upload/v1527728794/qkzd59rfhujbnsoezpsy.jpg');">
  -->
-<div class="background-instrument" style="color: white; background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= cl_image_path("qkzd59rfhujbnsoezpsy.jpg") %>');">
+<div class="background-instrument" style="color: black">
   <div class="container container-instrument">
     <div class="row">
       <h1>Add a new instrument</h1>
@@ -10,7 +10,7 @@
         <%= simple_form_for @instrument do |f| %>
           <%= f.input :title, :input_html => {:maxlength => 50} %>
           <%= f.input :description %>
-          <%= f.input :category, collection: ['Guitare', 'Piano', 'Saxophone', 'Violon'] %>
+          <%= f.input :category, collection: Instrument.categories %>
           <%= f.input :price %>
           <%= f.input :address %>
           <%= f.input :image %>
