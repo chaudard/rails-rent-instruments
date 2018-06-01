@@ -1,6 +1,6 @@
 <div class="background-instrument" >
+  <h1 class="top"> Editing <%= @instrument.title %></h1>
   <div class="container text-center">
-    <h1>Edit <%= @instrument.title %></h1>
     <div class="instrument-form">
       <%= simple_form_for @instrument do |f| %>
       <%= f.input :title %>
@@ -10,8 +10,10 @@
       <%= f.input :address %>
       <%= f.input :image %>
       <%= f.input :image_cache, as: :hidden %>
-      <%= f.submit "valid changements", class: "btn btn-primary" %>
+      <%= f.submit "Done !", class: "btn btn-success small-button" %>
+
       <% end %>
     </div>
   </div>
+  <p><%= link_to "Back to dashboard", dashboard_bookings_path , class:"btn btn-success small-button" %></p>
 </div>
