@@ -24,15 +24,8 @@
   text-align: center;
 }
 
-.main-container{
+.wrapper{
   display: flex;
-  justify-content : space-around;
-}
-
-.cards-container{
-  flex: 1 1 auto;
-  border: 1px solid black;
-  padding-right: 10px;
 }
 
 #map {
