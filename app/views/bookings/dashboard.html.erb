@@ -40,12 +40,25 @@
         <% else %>
          - <em><strong>Aborted =(</em></strong>
         <% end %>
-      </li>
-      <% end %>
+
+      <!-- change rating of this booking -->
+
+      <div id="form-change-rating">
+        <%= simple_form_for booking, remote: true, url: changerating_booking_path(booking), method: :get do |f| %>
+          <%= f.input :rating, collection: ['0', '1', '2', '3', '4', '5'] %>
+          <%= f.submit "valid new rating", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+
+
+    </li>
+    <% end %>
     </ul>
     <a class = "btn btn-success small-button"href="#my-instrument"> Back to top </a>
   </div>
   <!-- les personnes qui m ont loue un de mes instrument ou qui me demandent pour le louer -->
+
   <div class="top">
     <h2><balise id="f-booking"> Foreign Bookings </balise></h2>
     <ul>
@@ -55,15 +68,36 @@
         <%= booking.instrument.title %>
         <%= cl_image_tag booking.user.avatar, id: "dashboard-avatar-user" %><br>
         from: <%= booking.start_date %> to: <%= booking.end_date %>
-        <% if booking.validated.nil? %>
-         <br>
-         <%= link_to "validated", '#' , class: "btn btn-success small-button" %>
-         <%= link_to "aborted", '#' , class: "btn btn-success small-button" %>
-        <% elsif booking.validated %>
-         - <strong>Validated !</strong>
-        <% else %>
-         - <em><strong>Aborted =(</em></strong>
-        <% end %>
+       <br>
+       <div id="form-valid-abort-booking">
+
+        <div id="form-valid-booking">
+          <%= simple_form_for booking, remote: true, url: valid_booking_path(booking), method: :get do |f| %>
+            <%= f.submit "valid", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+
+        <div id="form-abort-booking">
+          <%= simple_form_for booking, remote: true, url: abort_booking_path(booking), method: :get do |f| %>
+            <%= f.submit "abort", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+       </div>
+
+        <p>
+          status :
+          <span id="booking-status">
+
+            <% if booking.validated.nil? %>
+              pending
+            <% elsif booking.validated %>
+              validated
+            <% else %>
+              aborted
+            <% end %>
+
+          </span>
+        </p>
       </li>
       <% end %>
     </ul>

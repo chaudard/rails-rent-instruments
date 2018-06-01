@@ -23,6 +23,9 @@ class InstrumentsController < ApplicationController
   def show
     @proprio = @instrument.user
     @booking = Booking.new
+    # compute number of bookings
+    @nb_bookings = Booking.where(instrument: @instrument).count
+    @sum_ratings = Booking.where(instrument: @instrument).sum(:rating)
     authorize @instrument
   end
 
