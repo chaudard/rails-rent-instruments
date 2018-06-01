@@ -1,3 +1,3 @@
 import "bootstrap";
 import "../components/navbar.js"
-// import "../components/forms.js"
+import "../components/datepicker.js"

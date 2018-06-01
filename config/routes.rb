@@ -9,5 +9,10 @@ Rails.application.routes.draw do
     collection do
       get 'dashboard', to: "bookings#dashboard"  # BookingsController#dashboard
     end
+    member do
+      get 'changerating', to: "bookings#changerating"
+      get 'valid', to: "bookings#valid"
+      get 'abort', to: "bookings#abort"
+    end
   end
 end
