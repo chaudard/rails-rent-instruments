@@ -1,43 +1,66 @@
-<h1>my dashboard</h1>
-<div>
-  <h2>my instruments</h2>
-  <p>
-    <%= link_to "add", new_instrument_path , class: "btn btn-primary" %>
-  </p>
-  <ul>
-    <% @instruments.each do |instrument| %>
-    <li>
-      <%= cl_image_tag instrument.image, height: 150, width: 200, crop: :fill  %>
-      <%= instrument.title %>
-      <%= link_to "edit", edit_instrument_path(instrument) , class: "btn btn-primary" %>
-    </li>
-    <% end %>
-  </ul>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<div class="top">
+  <h2><balise id="my-instrument"> </balise></h2>
+  <a class = "btn btn-success small-button"href="#f-booking"> Foreign Bookings ! </a>
+  <a class = "btn btn-success small-button"href="#my-booking"> Your Booking </a>
+  <a><%= link_to "Add an instrument", new_instrument_path , class:"btn btn-success small-button" %></a>
+  <h1>My Instruments</h1>
 </div>
-<div>
-  <h2>my bookings</h2>
-  <!-- les locations d instruments que j ai faites aupres d autres personnes -->
+<div class="contener" style="display: flex;">
+  <div class="container">
+    <div class="row">
+      <% @instruments.each do |instrument| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: url(<%= cl_image_path instrument.image %>);">
+          <%= link_to "", edit_instrument_path(instrument), class: "card-link" %>
+          <!-- ajouter ici les infos de rating moyen + nombre de bookings -->
+          <p><strong><em><%= instrument.address %></strong></em></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="top">
+  <h2><balise id="my-booking"> My Bookings </balise></h2>
   <ul>
     <% @bookings.each do |booking| %>
     <li>
       <%= cl_image_tag booking.instrument.image, height: 150, width: 200, crop: :fill  %>
       <%= booking.instrument.title %>
       <%= cl_image_tag booking.instrument.user.avatar, id: "dashboard-avatar-user" %><br>
-      from: <%= booking.start_date %> to: <%= booking.end_date %>
+      FROM: <%= booking.start_date %> => <%= booking.end_date %>
       <% if booking.validated.nil? %>
-       - pending
+      - <em>Pending..</em>
       <% elsif booking.validated %>
-       - validated
+      - <strong>Validated !</strong>
       <% else %>
-       - aborted
+      - <em><strong>Aborted =(</em></strong>
       <% end %>
+
+      <!-- change rating of this booking -->
+
+      <div id="form-change-rating">
+        <%= simple_form_for booking, remote: true, url: changerating_booking_path(booking), method: :get do |f| %>
+        <%= f.input :rating, collection: ['0', '1', '2', '3', '4', '5'] %>
+        <%= f.submit "valid new rating", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+
+
     </li>
     <% end %>
   </ul>
+  <a class = "btn btn-success small-button"href="#my-instrument"> Back to top </a>
 </div>
-<div>
-  <h2>foreign bookings</h2>
-  <!-- les personnes qui m ont loue un de mes instrument ou qui me demandent pour le louer -->
+<!-- les personnes qui m ont loue un de mes instrument ou qui me demandent pour le louer -->
+
+<div class="top">
+  <h2><balise id="f-booking"> Foreign Bookings </balise></h2>
   <ul>
     <% @foreign_bookings.each do |booking| %>
     <li>
@@ -45,16 +68,38 @@
       <%= booking.instrument.title %>
       <%= cl_image_tag booking.user.avatar, id: "dashboard-avatar-user" %><br>
       from: <%= booking.start_date %> to: <%= booking.end_date %>
-      <% if booking.validated.nil? %>
-       <br>
-       <%= link_to "validated", '#' , class: "btn btn-primary" %>
-       <%= link_to "aborted", '#' , class: "btn btn-primary" %>
-      <% elsif booking.validated %>
-       - validated
-      <% else %>
-       - aborted
-      <% end %>
+      <br>
+      <div id="form-valid-abort-booking">
+
+        <div id="form-valid-booking">
+          <%= simple_form_for booking, remote: true, url: valid_booking_path(booking), method: :get do |f| %>
+          <%= f.submit "valid", class: "btn btn-success small-button" %>
+          <% end %>
+        </div>
+
+        <div id="form-abort-booking">
+          <%= simple_form_for booking, remote: true, url: abort_booking_path(booking), method: :get do |f| %>
+          <%= f.submit "abort", class: "btn btn-success small-button" %>
+          <% end %>
+        </div>
+      </div>
+
+      <p>
+        status :
+        <strong id="booking-status">
+
+          <% if booking.validated.nil? %>
+          pending
+          <% elsif booking.validated %>
+          validated
+          <% else %>
+          aborted
+          <% end %>
+
+        </strong>
+      </p>
     </li>
     <% end %>
   </ul>
+  <a class = "btn btn-success small-button"href="#my-instrument"> Back to top </a>
 </div>

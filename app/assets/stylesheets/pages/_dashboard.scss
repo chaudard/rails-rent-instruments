@@ -1,5 +1,21 @@
+.top {
+  text-align: center;
+}
+
+.card-dash:hover {
+  box-shadow: 0 12px 20px 0 rgba(0,0,0,0.2);
+}
+
+.contener {
+  padding: 2px 16px;
+}
+
 #dashboard-avatar-user {
   height: 40px;
   width: 45px;
   border-radius: 50%;
+}
+
+#form-change-rarting {
+  width: 100px;
 }
