@@ -12,7 +12,7 @@
           <%= f.input :category, collection: Instrument.categories, label: false, selected: @category %>
         </div>
         <div class="form-group col-sm-4 col-xs-6">
-          <%= f.submit "Search", class: "btn-search" %>
+          <%= f.submit "Search", class: "btn btn-success small-button" %>
         </div>
       <% end %>
     </div>
@@ -57,4 +57,3 @@
   </div>
   <div id="map" data-markers="<%= @markers.to_json %>"></div>
 </div>
-

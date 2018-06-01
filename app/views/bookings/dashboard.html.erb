@@ -1,9 +1,8 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 <div class="top">
   <h2><balise id="my-instrument"> </balise></h2>
-  <a class = "btn btn-success small-button"href="#f-booking"> Foreign Bookings ! </a>
-  <a class = "btn btn-success small-button"href="#my-booking"> Your Booking </a>
-  <a><%= link_to "Add an instrument", new_instrument_path , class:"btn btn-success small-button" %></a>
+  <a class = "btn waves-effect waves-light grey darken-2"href="#f-booking"> Foreign Bookings ! </a>
+  <a class = "btn waves-effect waves-light grey darken-2"href="#my-booking"> Your Booking </a>
+  <a><%= link_to "Add an instrument", new_instrument_path , class:"btn waves-effect waves-light grey darken-2" %></a>
   <h1>My Instruments</h1>
 </div>
 <div class="contener" style="display: flex;">
@@ -36,9 +35,9 @@
       <% if booking.validated.nil? %>
       - <em>Pending..</em>
       <% elsif booking.validated %>
-      - <strong>Validated !</strong>
+      - <strong>Accepted !</strong>
       <% else %>
-      - <em><strong>Aborted =(</em></strong>
+      - <em><strong>Cancelled :(</em></strong>
       <% end %>
 
       <!-- change rating of this booking -->
@@ -46,16 +45,13 @@
       <div id="form-change-rating">
         <%= simple_form_for booking, remote: true, url: changerating_booking_path(booking), method: :get do |f| %>
         <%= f.input :rating, collection: ['0', '1', '2', '3', '4', '5'] %>
-        <%= f.submit "valid new rating", class: "btn btn-primary" %>
+        <%= f.submit "Rate !", class: "btn waves-effect waves-light teal accent-4" %>
         <% end %>
       </div>
-
-
 
     </li>
     <% end %>
   </ul>
-  <a class = "btn btn-success small-button"href="#my-instrument"> Back to top </a>
 </div>
 <!-- les personnes qui m ont loue un de mes instrument ou qui me demandent pour le louer -->
 
@@ -73,13 +69,13 @@
 
         <div id="form-valid-booking">
           <%= simple_form_for booking, remote: true, url: valid_booking_path(booking), method: :get do |f| %>
-          <%= f.submit "valid", class: "btn btn-success small-button" %>
+          <%= f.submit "Accept", class: "btn waves-effect waves-light teal accent-4" %>
           <% end %>
         </div>
 
         <div id="form-abort-booking">
           <%= simple_form_for booking, remote: true, url: abort_booking_path(booking), method: :get do |f| %>
-          <%= f.submit "abort", class: "btn btn-success small-button" %>
+          <%= f.submit "Cancel", class: "btn waves-effect waves-light red lighten-2" %>
           <% end %>
         </div>
       </div>
@@ -89,11 +85,11 @@
         <strong id="booking-status">
 
           <% if booking.validated.nil? %>
-          pending
+          Pending..
           <% elsif booking.validated %>
-          validated
+          Accepted
           <% else %>
-          aborted
+          Cancelled
           <% end %>
 
         </strong>
@@ -101,5 +97,5 @@
     </li>
     <% end %>
   </ul>
-  <a class = "btn btn-success small-button"href="#my-instrument"> Back to top </a>
+  <a class = "btn waves-effect waves-light blue darken-3"href="#my-instrument"> Back to top </a>
 </div>

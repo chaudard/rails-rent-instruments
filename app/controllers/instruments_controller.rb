@@ -56,7 +56,7 @@ class InstrumentsController < ApplicationController
     @instrument.user = current_user
     authorize @instrument
     if @instrument.save
-      redirect_to dashboard_bookings_path, notice: 'instrument created' # go to dashboard
+      redirect_to dashboard_bookings_path, notice: 'Instrument Created !' # go to dashboard
     else
       render :new
     end
@@ -69,7 +69,7 @@ class InstrumentsController < ApplicationController
   def update
     authorize @instrument
     @instrument.update(params_instrument)
-    redirect_to dashboard_bookings_path, notice: 'instrument updated'
+    redirect_to dashboard_bookings_path, notice: 'Instrument Updated !'
   end
 
   def destroy

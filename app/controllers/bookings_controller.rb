@@ -30,7 +30,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
       respond_to do |format|
-        format.html { redirect_to dashboard_bookings_path, notice: 'Booking rating updated' }
+        format.html { redirect_to dashboard_bookings_path, notice: 'Booking Rating is Updated' }
         format.js  # <-- will render `app/views/bookings/changerating.js.erb`
       end
     else
@@ -45,7 +45,7 @@ class BookingsController < ApplicationController
     @booking.validated = true
     if @booking.save
       respond_to do |format|
-        format.html { redirect_to dashboard_bookings_path, notice: 'Booking validated' }
+        format.html { redirect_to dashboard_bookings_path, notice: 'Booking Validated' }
         format.js  # <-- will render `app/views/bookings/valid.js.erb`
       end
     else
@@ -60,7 +60,7 @@ class BookingsController < ApplicationController
     @booking.validated = false
     if @booking.save
       respond_to do |format|
-        format.html { redirect_to dashboard_bookings_path, notice: 'Booking aborted' }
+        format.html { redirect_to dashboard_bookings_path, notice: 'Booking Canceled' }
         format.js  # <-- will render `app/views/bookings/abort.js.erb`
       end
     else
@@ -89,7 +89,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
       # redirect_to instrument_path(instrument), notice: 'Booking validated'
-      redirect_to dashboard_bookings_path, notice: 'Booking created'
+      redirect_to dashboard_bookings_path, notice: 'Booking Created'
     else
 
     end
