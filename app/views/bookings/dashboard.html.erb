@@ -1,10 +1,9 @@
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 <div class="top">
   <h2><balise id="my-instrument"> </balise></h2>
   <a class = "btn btn-success small-button"href="#f-booking"> Foreign Bookings ! </a>
   <a class = "btn btn-success small-button"href="#my-booking"> Your Booking </a>
-
-  <h2><%= link_to "Add an instrument", new_instrument_path , class: "btn btn-success small-button" %></h2>
+  <a><%= link_to "Add an instrument", new_instrument_path , class:"btn btn-success small-button" %></a>
   <h1>My Instruments</h1>
 </div>
 <div class="contener" style="display: flex;">
@@ -25,48 +24,48 @@
 
 
 
-  <!-- les locations d instruments que j ai faites aupres d autres personnes -->
-  <h2><balise id="my-booking"> My Bookings </balise></h2>
-  <ul>
-    <% @bookings.each do |booking| %>
-    <li>
-      <%= cl_image_tag booking.instrument.image, height: 150, width: 200, crop: :fill  %>
-      <%= booking.instrument.title %>
-      <%= cl_image_tag booking.instrument.user.avatar, id: "dashboard-avatar-user" %><br>
-      from: <%= booking.start_date %> to: <%= booking.end_date %>
-      <% if booking.validated.nil? %>
-       - <em>Pending..</em>
-      <% elsif booking.validated %>
-       - <strong>Validated !</strong>
-      <% else %>
-       - <em><strong>Aborted =(</em></strong>
+  <div class="top">
+    <h2><balise id="my-booking"> My Bookings </balise></h2>
+    <ul>
+      <% @bookings.each do |booking| %>
+      <li>
+        <%= cl_image_tag booking.instrument.image, height: 150, width: 200, crop: :fill  %>
+        <%= booking.instrument.title %>
+        <%= cl_image_tag booking.instrument.user.avatar, id: "dashboard-avatar-user" %><br>
+        FROM: <%= booking.start_date %> => <%= booking.end_date %>
+        <% if booking.validated.nil? %>
+         - <em>Pending..</em>
+        <% elsif booking.validated %>
+         - <strong>Validated !</strong>
+        <% else %>
+         - <em><strong>Aborted =(</em></strong>
+        <% end %>
+      </li>
       <% end %>
-    </li>
-    <% end %>
+    </ul>
     <a class = "btn btn-success small-button"href="#my-instrument"> Back to top </a>
-  </ul>
-</div>
-<div>
+  </div>
   <!-- les personnes qui m ont loue un de mes instrument ou qui me demandent pour le louer -->
-  <h2><balise id="f-booking"> Foreign Bookings </balise></h2>
-  <ul>
-    <% @foreign_bookings.each do |booking| %>
-    <li>
-      <%= cl_image_tag booking.instrument.image, height: 150, width: 200, crop: :fill  %>
-      <%= booking.instrument.title %>
-      <%= cl_image_tag booking.user.avatar, id: "dashboard-avatar-user" %><br>
-      from: <%= booking.start_date %> to: <%= booking.end_date %>
-      <% if booking.validated.nil? %>
-       <br>
-       <%= link_to "validated", '#' , class: "btn-push" %>
-       <%= link_to "aborted", '#' , class: "btn-push" %>
-      <% elsif booking.validated %>
-       - <strong>Validated !</strong>
-      <% else %>
-       - <em><strong>Aborted =(</em></strong>
+  <div class="top">
+    <h2><balise id="f-booking"> Foreign Bookings </balise></h2>
+    <ul>
+      <% @foreign_bookings.each do |booking| %>
+      <li>
+        <%= cl_image_tag booking.instrument.image, height: 150, width: 200, crop: :fill  %>
+        <%= booking.instrument.title %>
+        <%= cl_image_tag booking.user.avatar, id: "dashboard-avatar-user" %><br>
+        from: <%= booking.start_date %> to: <%= booking.end_date %>
+        <% if booking.validated.nil? %>
+         <br>
+         <%= link_to "validated", '#' , class: "btn btn-success small-button" %>
+         <%= link_to "aborted", '#' , class: "btn btn-success small-button" %>
+        <% elsif booking.validated %>
+         - <strong>Validated !</strong>
+        <% else %>
+         - <em><strong>Aborted =(</em></strong>
+        <% end %>
+      </li>
       <% end %>
-    </li>
-    <% end %>
+    </ul>
     <a class = "btn btn-success small-button"href="#my-instrument"> Back to top </a>
-  </ul>
 </div>
