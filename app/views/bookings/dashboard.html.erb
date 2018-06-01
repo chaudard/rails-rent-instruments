@@ -22,80 +22,84 @@
 </div>
 
 
+<div class="container">
 
-<div class="top">
-  <h2><balise id="my-booking"> My Bookings </balise></h2>
-  <ul>
-    <% @bookings.each do |booking| %>
-    <li>
-      <%= cl_image_tag booking.instrument.image, height: 150, width: 200, crop: :fill  %>
-      <%= booking.instrument.title %>
-      <%= cl_image_tag booking.instrument.user.avatar, id: "dashboard-avatar-user" %><br>
-      FROM: <%= booking.start_date %> => <%= booking.end_date %>
-      <% if booking.validated.nil? %>
-      - <em>Pending..</em>
-      <% elsif booking.validated %>
-      - <strong>Accepted !</strong>
-      <% else %>
-      - <em><strong>Cancelled :(</em></strong>
-      <% end %>
-
-      <!-- change rating of this booking -->
-
-      <div id="form-change-rating">
-        <%= simple_form_for booking, remote: true, url: changerating_booking_path(booking), method: :get do |f| %>
-        <%= f.input :rating, collection: ['0', '1', '2', '3', '4', '5'] %>
-        <%= f.submit "Rate !", class: "btn waves-effect waves-light teal accent-4" %>
+  <div class="top">
+    <h2><balise id="my-booking"> My Bookings </balise></h2>
+    <div class="row">
+      <% @bookings.each do |booking| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= cl_image_tag booking.instrument.image, height: 150, width: 200, crop: :fill  %><br>
+        <%= booking.instrument.title %>
+        <%= cl_image_tag booking.instrument.user.avatar, id: "dashboard-avatar-user" %><br>
+        FROM: <%= booking.start_date %><br>
+        TO : <%= booking.end_date %><br>
+        <% if booking.validated.nil? %>
+        - <em>Pending..</em>
+        <% elsif booking.validated %>
+        - <strong>Accepted !</strong>
+        <% else %>
+        - <em><strong>Cancelled :(</em></strong>
         <% end %>
-      </div>
 
-    </li>
-    <% end %>
-  </ul>
-</div>
-<!-- les personnes qui m ont loue un de mes instrument ou qui me demandent pour le louer -->
+        <!-- change rating of this booking -->
 
-<div class="top">
-  <h2><balise id="f-booking"> Foreign Bookings </balise></h2>
-  <ul>
-    <% @foreign_bookings.each do |booking| %>
-    <li>
-      <%= cl_image_tag booking.instrument.image, height: 150, width: 200, crop: :fill  %>
-      <%= booking.instrument.title %>
-      <%= cl_image_tag booking.user.avatar, id: "dashboard-avatar-user" %><br>
-      from: <%= booking.start_date %> to: <%= booking.end_date %>
-      <br>
-      <div id="form-valid-abort-booking">
-
-        <div id="form-valid-booking">
-          <%= simple_form_for booking, remote: true, url: valid_booking_path(booking), method: :get do |f| %>
-          <%= f.submit "Accept", class: "btn waves-effect waves-light teal accent-4" %>
+        <div id="form-change-rating">
+          <%= simple_form_for booking, remote: true, url: changerating_booking_path(booking), method: :get do |f| %>
+          <%= f.input :rating, collection: ['0', '1', '2', '3', '4', '5'] %>
+          <%= f.submit "Rate !", class: "btn waves-effect waves-light teal accent-4" %>
           <% end %>
         </div>
 
-        <div id="form-abort-booking">
-          <%= simple_form_for booking, remote: true, url: abort_booking_path(booking), method: :get do |f| %>
-          <%= f.submit "Cancel", class: "btn waves-effect waves-light red lighten-2" %>
-          <% end %>
-        </div>
       </div>
+      <% end %>
+    </div>
+  </div>
+  <!-- les personnes qui m ont loue un de mes instrument ou qui me demandent pour le louer -->
 
-      <p>
-        status :
-        <strong id="booking-status">
+  <div class="top">
+    <h2><balise id="f-booking"> Foreign Bookings </balise></h2>
+    <div class="row">
+      <% @foreign_bookings.each do |booking| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= cl_image_tag booking.instrument.image, height: 150, width: 200, crop: :fill  %><br>
+        <%= booking.instrument.title %>
+        <%= cl_image_tag booking.user.avatar, id: "dashboard-avatar-user" %><br>
+        FROM: <%= booking.start_date %><br>
+        TO: <%= booking.end_date %>
+        <br>
+        <div id="form-valid-abort-booking">
 
-          <% if booking.validated.nil? %>
-          Pending..
-          <% elsif booking.validated %>
-          Accepted
-          <% else %>
-          Cancelled
-          <% end %>
+          <div id="form-valid-booking">
+            <%= simple_form_for booking, remote: true, url: valid_booking_path(booking), method: :get do |f| %>
+            <%= f.submit "Accept", class: "btn waves-effect waves-light teal accent-4" %>
+            <% end %>
+          </div>
 
-        </strong>
-      </p>
-    </li>
-    <% end %>
-  </ul>
-  <a class = "btn waves-effect waves-light blue darken-3"href="#my-instrument"> Back to top </a>
+          <div id="form-abort-booking">
+            <%= simple_form_for booking, remote: true, url: abort_booking_path(booking), method: :get do |f| %>
+            <%= f.submit "Cancel", class: "btn waves-effect waves-light red lighten-2" %>
+            <% end %>
+          </div>
+        </div>
+
+        <p>
+          status :
+          <strong id="booking-status">
+
+            <% if booking.validated.nil? %>
+            Pending..
+            <% elsif booking.validated %>
+            Accepted
+            <% else %>
+            Cancelled
+            <% end %>
+
+          </strong>
+        </p>
+      </div>
+      <% end %>
+    </div>
+    <a class = "btn waves-effect waves-light blue darken-3"href="#my-instrument"> Back to top </a>
+  </div>
 </div>
