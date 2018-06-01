@@ -1,4 +1,3 @@
-<div class="container max-width">
   <div class="row" id="search">
     <div class="head-form">
       <%= simple_form_for 'search', method: :get, url: instruments_path do |f| %>
@@ -27,23 +26,35 @@
 -->
       <!-- <button type="submit" class="btn-search">Search</button> -->
     <!-- </form>. -->
-  </div>
+</div>
 
 
-  <div class="main-container">
+<div class="wrapper">
+  <div class="container">
     <div class="row">
       <% @instruments.each do |instrument| %>
-      <div class="col-xs-12 col-sm-6 col-md-4 card-container">
-        <div class="card" style="background-image: url(<%= cl_image_path instrument.image %>);">
-          <%= link_to "", instrument_path(instrument), class: "card-link" %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="card" style="background-image: url(<%= cl_image_path instrument.image %>);">
+
+            <div class="card-description">
+              <h2><%= instrument.title %></h2>
+              <P>Average rating : <%= instrument.bookings.average(:rating) %></P>
+            </div>
+            <%= cl_image_tag instrument.user.avatar, class: "card-user" %>
+            <%= link_to "", instrument_path(instrument), class: "card-link" %>
+          </div>
+<!--
+            <%= link_to "", instrument_path(instrument), class: "card-link" %>
+            <p><%= instrument.title %></p>
+            <p><%= instrument.address %></p>
+          </div>
+          <P>Average rating : <%= instrument.bookings.average(:rating) %></P>
+          <p>Booked <%= Booking.where(instrument_id: instrument.id).count %> times</p>
+         -->
         </div>
-        <p><%= instrument.address %></p>
-        <P>Average rating : <%= instrument.bookings.average(:rating) %></P>
-        <p>Booked <%= Booking.where(instrument_id: instrument.id).count %> times</p>
-      </div>
       <% end %>
     </div>
-    <div id="map" data-markers="<%= @markers.to_json %>"></div>
   </div>
+  <div id="map" data-markers="<%= @markers.to_json %>"></div>
 </div>
 
