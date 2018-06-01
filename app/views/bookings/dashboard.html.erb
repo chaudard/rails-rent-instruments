@@ -1,6 +1,11 @@
+
 <div class="top">
-  <h1>My Instruments</h1>
+  <h2><balise id="my-instrument"> </balise></h2>
+  <a class = "btn btn-success small-button"href="#f-booking"> Foreign Bookings ! </a>
+  <a class = "btn btn-success small-button"href="#my-booking"> Your Booking </a>
+
   <h2><%= link_to "Add an instrument", new_instrument_path , class: "btn btn-success small-button" %></h2>
+  <h1>My Instruments</h1>
 </div>
 <div class="contener" style="display: flex;">
   <div class="container">
@@ -20,8 +25,8 @@
 
 
 
-<h2>My bookings</h2>
   <!-- les locations d instruments que j ai faites aupres d autres personnes -->
+  <h2><balise id="my-booking"> My Bookings </balise></h2>
   <ul>
     <% @bookings.each do |booking| %>
     <li>
@@ -38,11 +43,12 @@
       <% end %>
     </li>
     <% end %>
+    <a class = "btn btn-success small-button"href="#my-instrument"> Back to top </a>
   </ul>
 </div>
 <div>
-  <h2>foreign bookings</h2>
   <!-- les personnes qui m ont loue un de mes instrument ou qui me demandent pour le louer -->
+  <h2><balise id="f-booking"> Foreign Bookings </balise></h2>
   <ul>
     <% @foreign_bookings.each do |booking| %>
     <li>
@@ -61,5 +67,6 @@
       <% end %>
     </li>
     <% end %>
+    <a class = "btn btn-success small-button"href="#my-instrument"> Back to top </a>
   </ul>
 </div>
