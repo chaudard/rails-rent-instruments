@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     end
     member do
       get 'changerating', to: "bookings#changerating"
+      get 'valid', to: "bookings#valid"
+      get 'abort', to: "bookings#abort"
     end
   end
 end

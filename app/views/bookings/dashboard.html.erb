@@ -34,8 +34,8 @@
 
       <!-- change rating of this booking -->
 
-      <div id="form-change-rarting">
-        <%= simple_form_for booking, url: changerating_booking_path(booking), method: :get do |f| %>
+      <div id="form-change-rating">
+        <%= simple_form_for booking, remote: true, url: changerating_booking_path(booking), method: :get do |f| %>
           <%= f.input :rating, collection: ['0', '1', '2', '3', '4', '5'] %>
           <%= f.submit "valid new rating", class: "btn btn-primary" %>
         <% end %>
@@ -58,15 +58,42 @@
       <%= booking.instrument.title %>
       <%= cl_image_tag booking.user.avatar, id: "dashboard-avatar-user" %><br>
       from: <%= booking.start_date %> to: <%= booking.end_date %>
-      <% if booking.validated.nil? %>
        <br>
-       <%= link_to "validated", '#' , class: "btn btn-primary" %>
-       <%= link_to "aborted", '#' , class: "btn btn-primary" %>
-      <% elsif booking.validated %>
-       - validated
-      <% else %>
-       - aborted
-      <% end %>
+
+
+
+       <div id="form-valid-abort-booking">
+
+        <div id="form-valid-booking">
+          <%= simple_form_for booking, remote: true, url: valid_booking_path(booking), method: :get do |f| %>
+            <%= f.submit "valid", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+
+        <div id="form-abort-booking">
+          <%= simple_form_for booking, remote: true, url: abort_booking_path(booking), method: :get do |f| %>
+            <%= f.submit "abort", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+       </div>
+
+        <p>
+          status :
+          <span id="booking-status">
+
+            <% if booking.validated.nil? %>
+              pending
+            <% elsif booking.validated %>
+              validated
+            <% else %>
+              aborted
+            <% end %>
+
+          </span>
+        </p>
+
+
+
     </li>
     <% end %>
   </ul>

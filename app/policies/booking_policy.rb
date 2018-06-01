@@ -21,6 +21,14 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
+  def valid?
+    true
+  end
+
+  def abort?
+    true
+  end
+
   def changerating?
     true
   end
