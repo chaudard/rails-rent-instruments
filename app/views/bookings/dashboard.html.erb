@@ -1,22 +1,32 @@
-<h1>my dashboard</h1>
-<div>
-  <h2>my instruments</h2>
-  <p>
-    <%= link_to "add", new_instrument_path , class: "btn btn-primary" %>
-  </p>
-  <ul>
-    <% @instruments.each do |instrument| %>
-    <li>
-      <%= cl_image_tag instrument.image, height: 150, width: 200, crop: :fill  %>
-      <%= instrument.title %>
-      <%= link_to "edit", edit_instrument_path(instrument) , class: "btn btn-primary" %>
-    </li>
-    <% end %>
-  </ul>
+
+<div class="top">
+  <h2><balise id="my-instrument"> </balise></h2>
+  <a class = "btn btn-success small-button"href="#f-booking"> Foreign Bookings ! </a>
+  <a class = "btn btn-success small-button"href="#my-booking"> Your Booking </a>
+
+  <h2><%= link_to "Add an instrument", new_instrument_path , class: "btn btn-success small-button" %></h2>
+  <h1>My Instruments</h1>
 </div>
-<div>
-  <h2>my bookings</h2>
+<div class="contener" style="display: flex;">
+  <div class="container">
+    <div class="row">
+      <% @instruments.each do |instrument| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: url(<%= cl_image_path instrument.image %>);">
+          <%= link_to "", edit_instrument_path(instrument), class: "card-link" %>
+          <!-- ajouter ici les infos de rating moyen + nombre de bookings -->
+          <p><strong><em><%= instrument.address %></strong></em></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
   <!-- les locations d instruments que j ai faites aupres d autres personnes -->
+  <h2><balise id="my-booking"> My Bookings </balise></h2>
   <ul>
     <% @bookings.each do |booking| %>
     <li>
@@ -25,11 +35,11 @@
       <%= cl_image_tag booking.instrument.user.avatar, id: "dashboard-avatar-user" %><br>
       from: <%= booking.start_date %> to: <%= booking.end_date %>
       <% if booking.validated.nil? %>
-       - pending
+       - <em>Pending..</em>
       <% elsif booking.validated %>
-       - validated
+       - <strong>Validated !</strong>
       <% else %>
-       - aborted
+       - <em><strong>Aborted =(</em></strong>
       <% end %>
 
       <!-- change rating of this booking -->
@@ -46,11 +56,12 @@
 
     </li>
     <% end %>
+    <a class = "btn btn-success small-button"href="#my-instrument"> Back to top </a>
   </ul>
 </div>
 <div>
-  <h2>foreign bookings</h2>
   <!-- les personnes qui m ont loue un de mes instrument ou qui me demandent pour le louer -->
+  <h2><balise id="f-booking"> Foreign Bookings </balise></h2>
   <ul>
     <% @foreign_bookings.each do |booking| %>
     <li>
@@ -59,9 +70,6 @@
       <%= cl_image_tag booking.user.avatar, id: "dashboard-avatar-user" %><br>
       from: <%= booking.start_date %> to: <%= booking.end_date %>
        <br>
-
-
-
        <div id="form-valid-abort-booking">
 
         <div id="form-valid-booking">
@@ -91,10 +99,8 @@
 
           </span>
         </p>
-
-
-
     </li>
     <% end %>
+    <a class = "btn btn-success small-button"href="#my-instrument"> Back to top </a>
   </ul>
 </div>
